@@ -61,7 +61,7 @@ export const login = async (req,res)=>{
         const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
 
         if(!user || !isPasswordCorrect){
-            res.status(400).json({error: "Username or Password is Incorrect"});
+            return res.status(400).json({error: "Username or Password is Incorrect"});
         }
 
         generateTokenAndSetCookie(user._id, res);
@@ -79,5 +79,11 @@ export const login = async (req,res)=>{
 }
 
 export const logout = (req,res)=>{
-    console.log("Logout ")
+    try {
+        res.cookie("jwt","",{maxAge: 0});
+        res.status(200).json({message: "Logged Out Successfully"});
+    } catch (error) {
+        console.log("Error in Logout controller",error.message);
+        res.status(500).send("Internal Server Error");
+    }
 }
