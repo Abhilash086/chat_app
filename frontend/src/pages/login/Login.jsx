@@ -1,5 +1,4 @@
 import React from 'react'
-import SignUp from '../signup/SignUp'
 import { Link } from 'react-router-dom'
 
 const Login = () => {
