@@ -1,11 +1,13 @@
 import React from 'react'
+import useConversation from '../../zustand/useConversation'
 
 const Message = () => {
+  const {selectedConversation} = useConversation();
   return (
     <div className='chat chat-end'>
         <div className='chat-image avatar'>
             <div className='w-10 rounded-full'>
-                <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" alt="" />
+                <img src={selectedConversation.profilePic} alt="" />
             </div>
         </div>
         <div className='chat-bubble text-white bg-gray-700'>Hi what is up</div>
