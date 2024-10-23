@@ -13,13 +13,13 @@ const Message = ({message}) => {
   const formattedTime = extractTime(message.createdAt)
   
   return (
-    <div className={`chat ${chatClassName}`}>
+    <div className={`chat ${chatClassName} w-full`}>
         <div className='chat-image avatar'>
             <div className='w-10 rounded-full'>
                 <img src={profilePic} alt="" />
             </div>
         </div>
-        <div className={`chat-bubble text-white ${bubbleBgColor}`}>{message.message}</div>
+        <div className={`chat-bubble text-white break-words ${bubbleBgColor}`}>{message.message}</div>
         <div className='chat-footer text-[#909090]'>{formattedTime}</div>
     </div>
   )
